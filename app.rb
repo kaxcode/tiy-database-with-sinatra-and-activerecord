@@ -77,3 +77,60 @@ get '/delete_employee' do
 
   redirect to('/employees')
 end
+
+class Course < ActiveRecord::Base
+  self.primary_key = :id
+end
+
+after do
+  ActiveRecord::Base.connection.close
+end
+
+# Course sinatra code
+get '/courses' do
+  @courses = Course.all
+
+  erb :courses
+end
+
+get '/new_course' do
+  erb :new_course
+end
+
+post '/create_course' do
+  Course.create(params)
+
+  redirect to ('/courses')
+end
+
+get '/show_course' do
+  @course = Course.find(params["id"])
+
+  erb :course
+end
+
+get '/edit_course' do
+  @course = Course.find(params["id"])
+
+  erb :edit_course
+end
+
+post '/update_course' do
+  course = Course.find(params["id"])
+  course.update_attributes(params)
+
+  redirect to ('/courses')
+end
+
+get '/search_course' do
+  @courses = Course.where(name: params["search"])
+
+  erb :courses
+end
+
+get '/delete_course' do
+  @course = Course.find(params["id"])
+  Course.delete_course
+
+  redirect to ('/courses')
+end

@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Home</title>
+    <title>Edit Courses</title>
 
     <!-- Bootstrap -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
@@ -33,18 +33,42 @@
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="navbar">
           <ul class="nav navbar-nav">
-            <li class="active"><a href="/">Home</a></li>
-            <li><a href="/employees">Employees</a></li>
+            <li><a href="/">Home</a></li>
+            <li class="active"><a href="/employees">Employees</a></li>
             <li><a href="/courses">Courses</a></li>
           </ul>
         </div><!-- /.navbar-collapse -->
       </div><!-- /.container-fluid -->
     </nav>
     <div class="container-fluid">
-      <div class="jumbotron text-center">
-        <h1>TIY Database!</h1>
-        <h2>Your data, when you need it.</h2>
+      <div class="page-header">
+        <h1>Edit an course</h1>
+        <h2>id: <%= @course.id %></h2>
       </div>
+      <form action="/update_course" method="post">
+        <input type="hidden" class="form-control" name="id" value="<%= @course.id %>">
+        <div class="form-group">
+            <label for="name">Name</label>
+            <input type="text" class="form-control" name="name" value="<%= @course.name %>">
+        </div>
+        <div class="form-group">
+          <label for="subject">Subject</label>
+          <input type="text" class="form-control" name="subject" value="<%= @course.subject %>">
+        </div>
+        <div class="form-group">
+          <label for="start_date">Start Date</label>
+          <input type="text" class="form-control" name="start_date" value="<%= @course.start_date %>">
+        </div>
+        <div class="form-group">
+          <label for="end_date">End Date</label>
+          <input type="text" class="form-control" name="end_date" value="<%= @course.end_date %>">
+        </div>
+        <div class="form-group">
+          <label for="intensive">Intensive</label>
+          <input type="checkbox" class="form-control" name="intensive" value="<%= @course.intensive %>">
+        </div>
+        <button type="submit" class="btn btn-default">Submit</button>
+      </form>
     </div>
 
 

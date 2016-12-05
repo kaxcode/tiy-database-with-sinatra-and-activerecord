@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Home</title>
+    <title>Course</title>
 
     <!-- Bootstrap -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
@@ -33,18 +33,25 @@
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="navbar">
           <ul class="nav navbar-nav">
-            <li class="active"><a href="/">Home</a></li>
+            <li><a href="/">Home</a></li>
             <li><a href="/employees">Employees</a></li>
-            <li><a href="/courses">Courses</a></li>
+            <li class="active"><a href="/courses">Courses</a></li>
           </ul>
         </div><!-- /.navbar-collapse -->
       </div><!-- /.container-fluid -->
     </nav>
     <div class="container-fluid">
-      <div class="jumbotron text-center">
-        <h1>TIY Database!</h1>
-        <h2>Your data, when you need it.</h2>
+      <div class="page-header">
+        <h1>Course details</h1>
       </div>
+      <ul class="list-group">
+        <li class="list-group-item"><%= @course.name %></li>
+        <li class="list-group-item"><%= @course.subject %></li>
+        <li class="list-group-item"><%= @course.start_date %></li>
+        <li class="list-group-item"><%= @course.end_date %></li>
+        <li class="list-group-item"><%= @course.intensive %></li>
+      </ul>
+      <a href="/edit_course?id=<%= @course.id %>" class="btn btn-primary">Edit course</a>
     </div>
 
 
